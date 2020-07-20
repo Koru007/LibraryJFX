@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="signupPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.Controller2">
+   <children>
+      <AnchorPane layoutX="145.0" layoutY="42.0" prefHeight="516.0" prefWidth="600.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="145.0" AnchorPane.rightAnchor="145.0" AnchorPane.topAnchor="42.0">
+         <children>
+            <AnchorPane layoutX="316.0" layoutY="25.0" maxWidth="330.0" prefHeight="466.0" prefWidth="330.0" style="-fx-background-color: white; -fx-background-radius: 1em;">
+               <children>
+                  <VBox layoutX="59.0" layoutY="20.0" prefHeight="377.0" prefWidth="242.0" AnchorPane.bottomAnchor="65.0" AnchorPane.topAnchor="20.0">
+                     <children>
+                        <Label prefHeight="30.0" prefWidth="84.0" text="Pesel">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="pesel_field" prefHeight="32.0" prefWidth="240.0" promptText="Pesel">
+                           <VBox.margin>
+                              <Insets top="-1.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label prefHeight="30.0" prefWidth="84.0" text="Imię">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="name_field" prefHeight="32.0" prefWidth="240.0" promptText="Imię" />
+                        <Label layoutX="10.0" layoutY="110.0" prefHeight="30.0" prefWidth="84.0" text="Nazwisko">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="sureName_field" layoutX="10.0" layoutY="140.0" prefHeight="32.0" prefWidth="240.0" promptText="Nazwisko" />
+                        <Label layoutX="10.0" layoutY="176.0" prefHeight="30.0" prefWidth="135.0" text="Adres">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="address_field" layoutX="10.0" layoutY="207.0" prefHeight="32.0" prefWidth="240.0" promptText="Grunwaldzka 15/10" />
+                        <Label layoutX="10.0" layoutY="243.0" prefHeight="30.0" prefWidth="84.0" text="Mail">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="mail_field" layoutX="10.0" layoutY="273.0" prefHeight="32.0" prefWidth="240.0" promptText="adam.kowalski@gmail.com" />
+                        <Label layoutX="10.0" layoutY="309.0" prefHeight="30.0" prefWidth="84.0" text="Telefon">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="phone_field" layoutX="10.0" layoutY="340.0" prefHeight="32.0" prefWidth="240.0" promptText="503-201-352" />
+                     </children>
+                  </VBox>
+                  <Button id="cancle" layoutX="307.0" layoutY="7.0" mnemonicParsing="false" onAction="#handleCancle" prefHeight="7.0" prefWidth="6.0" style="-fx-background-radius: 50; -fx-background-color: FF002CBF;" text="X" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="8.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="181.0" layoutY="413.0" mnemonicParsing="false" onAction="#saveNewClient" prefHeight="36.0" prefWidth="121.0" style="-fx-background-color: linear-gradient(to right top, #001636, #002163, #002992, #002cbf, #1225eb); -fx-background-radius: 1em;" text="Sign up" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="60.0" layoutY="413.0" mnemonicParsing="false" onAction="#back" prefHeight="36.0" prefWidth="84.0" style="-fx-background-color: #943aff; -fx-background-radius: 1em;" text="Back" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="7.0" layoutY="15.0" prefHeight="486.0" prefWidth="341.0" style="-fx-background-color: linear-gradient(to right top, #001636, #002163, #002992, #002cbf, #1225eb); -fx-background-radius: 1em;">
+               <children>
+                  <VBox alignment="CENTER_LEFT" layoutX="100.0" layoutY="14.0" prefHeight="366.0" prefWidth="242.0" AnchorPane.bottomAnchor="106.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0">
+                     <children>
+                        <ImageView fitHeight="111.0" fitWidth="111.0">
+                           <image>
+                              <Image url="@/resources/icons/libraryLogo.png" />
+<!--                              url="@../../../../Downloads/libraryLogo.png"-->
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="30.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label prefHeight="48.0" prefWidth="203.0" text="Library WWSIS" textFill="WHITE">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="30.0" prefWidth="173.0" text="JavaEE sem. IV" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Label layoutX="14.0" layoutY="436.0" prefHeight="36.0" prefWidth="224.0" text="Daniel Wojda, Paweł Stasiak, Małgorzata Stasiak, Katarzyna Palichleb " textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,64 @@
+.button{
+    -fx-background-color:  #002992;
+}
+.button:hover{
+    -fx-background-color: #0027bb;
+}
+.button:focused {
+    -fx-background-color: #0027bb;
+}
+
+
+.loginButton{
+    -fx-background-color:  #002cbf;
+    -fx-background-radius: 1em;
+}
+
+.loginButton:hover{
+    -fx-background-color: linear-gradient(to right top, #001636, #002163, #002992, #002cbf, #1225eb) 50%;
+}
+
+.newAccountButt{
+    -fx-background-color: #001636;
+}
+
+.newAccountButt:hover{
+    -fx-background-color: #002a5e;
+}
+
+.closeTheWidow{
+    -fx-background-color: rgba(255, 0, 59, 0.75);
+}
+
+.closeTheWidow:hover{
+    -fx-background-color: #ff003b;
+}
+
+.table-view{
+    -fx-background-radius: 0 0 1em 0
+}
+
+/*         TABLE             */
+
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    -fx-background-color: #3e3e3e;
+}
+.table-view .column-header .label{
+    -fx-text-fill: white;
+    -fx-alignment: CENTER;
+}
+.table-view .cell{
+    -fx-cell-size: 35;
+    -fx-alignment: center;
+    -fx-background-color: #29292D;
+    -fx-text-fill: lightgray;
+}
+.table-row-cell:selected {
+    -fx-background-color: whitesmoke;
+    -fx-text-background-color:  #6622CC;
+
+}
+.table-view .filler {
+    -fx-border-insets: 10
+}
