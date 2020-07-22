@@ -4,22 +4,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum BookType {
-    SENSACJA(1),
-    KRYMINAŁ(2),
-    FANTASTYKA(3),
+    SENSATION(1),
+    CRIMINAL(2),
+    FANTASY(3),
     THRILLER(4),
     HORROR(5),
-    OBYCZAJOWA(6),
-    PORADNIK(7),
-    BIOGRAFIA(8),
-    HISTORYCZNA(9),
-    PODRÓŻE(10),
+    NOVEL_OF_MANNERS(6),
+    GUIDE(7),
+    BIOGRAPHY(8),
+    HISTORICAL(9),
+    TRAVEL(10),
     ROMANS(11),
-    POPULARNONAUKOWA(12),
-    MŁODZIEŻOWA(13),
-    DZIECIĘCA(14),
-    REPORTAŻ(15),
-    PODRĘCZNIK(16);
+    POPULAR_SCIENCE(12),
+    YOUTH(13),
+    CHILDREN(14),
+    COVERAGE(15),
+    HANDBOOK(16);
 
     private final int value;
     private BookType(int value) {
