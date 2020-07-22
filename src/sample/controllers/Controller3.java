@@ -11,10 +11,12 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import sample.controllers.modelSection.BookTableModel;
 import sample.controllers.modelSection.ClientTableModel;
+import sample.controllers.modelSection.OrderTableModel;
 import sample.dbConnection.schemas.AddDataSchema;
 import sample.dbConnection.schemas.ChangingDataSchema;
 import sample.dbConnection.schemas.GetDataSchema;
 import sample.enumType.BookType;
+import sample.enumType.ShippingStatus;
 
 import java.io.IOException;
 import java.net.URL;
@@ -55,6 +57,14 @@ public class Controller3 implements Initializable {
     private TextField price_hold;
     @FXML
     private ComboBox<BookType> bookType;
+    //  Order__Section
+    @FXML
+    private ComboBox<ShippingStatus> orderStat;
+    @FXML
+    private TextField orderPesel;
+    @FXML
+    private TextField orderBookID;
+
     //   Delete section
     @FXML
     private TextField peselToDelete_field;
@@ -78,6 +88,18 @@ public class Controller3 implements Initializable {
     private TableColumn<?, ?> col_cli_name;
     @FXML
     private TableColumn<?, ?> col_cli_secNam;
+    // Order Table
+    @FXML
+    private TableView<OrderTableModel> orderTable;
+    @FXML
+    private TableColumn<?, ?> col_ord_id;
+    @FXML
+    private TableColumn<?, ?> col_ord_pesel;
+    @FXML
+    private TableColumn<?, ?> col_ord_book;
+    @FXML
+    private TableColumn<?, ?> col_ord_stat;
+
 
 
     @FXML
@@ -107,25 +129,21 @@ public class Controller3 implements Initializable {
         }
 
         GetDataSchema getData = new GetDataSchema();
-        col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        col_title.setCellValueFactory(new PropertyValueFactory<>("title"));
-        col_price.setCellValueFactory(new PropertyValueFactory<>("price"));
-
         bookTable.setItems(getData.seeAllBooks());
     }
 
     @FXML
     void changePrice(ActionEvent event) {
+        GetDataSchema getData = new GetDataSchema();
+
         int bookId = Integer.parseInt(bookID_field.getText());
         double pirice = Double.parseDouble(price_hold.getText());
 
         ChangingDataSchema changingDataSchema = new ChangingDataSchema();
         changingDataSchema.updateBookPriceByID(bookId, pirice);
 
-        GetDataSchema getData = new GetDataSchema();
-        col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        col_title.setCellValueFactory(new PropertyValueFactory<>("title"));
-        col_price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        bookID_field.clear();
+        price_hold.clear();
 
         bookTable.setItems(getData.seeAllBooks());
     }
@@ -138,11 +156,8 @@ public class Controller3 implements Initializable {
         changingDataSchema.deleteBookByID(id);
 
         bookID_field.clear();
-        GetDataSchema getData = new GetDataSchema();
-        col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        col_title.setCellValueFactory(new PropertyValueFactory<>("title"));
-        col_price.setCellValueFactory(new PropertyValueFactory<>("price"));
 
+        GetDataSchema getData = new GetDataSchema();
         bookTable.setItems(getData.seeAllBooks());
     }
 
@@ -156,10 +171,6 @@ public class Controller3 implements Initializable {
         peselToDelete_field.clear();
 
         GetDataSchema getData = new GetDataSchema();
-        col_cli_pesel.setCellValueFactory(new PropertyValueFactory<>("pesel"));
-        col_cli_name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        col_cli_secNam.setCellValueFactory(new PropertyValueFactory<>("second_name"));
-
         clientTable.setItems(getData.seeAllClients());
     }
 
@@ -175,14 +186,14 @@ public class Controller3 implements Initializable {
 
             lblStatusMin.setText("/home/books");
             lblStatus.setText("Books");
-            pnlStatus.setBackground(new Background(new BackgroundFill(Color.rgb(63, 43, 99), CornerRadii.EMPTY, Insets.EMPTY)));
+            pnlStatus.setBackground(new Background(new BackgroundFill(Color.rgb(21, 79, 141), CornerRadii.EMPTY, Insets.EMPTY)));
             pnBooks.toFront();
 
 
         } else if (event.getSource() == btnOrders) {
             lblStatusMin.setText("/home/orders");
             lblStatus.setText("Orders");
-            pnlStatus.setBackground(new Background(new BackgroundFill(Color.rgb(31, 125, 100), CornerRadii.EMPTY, Insets.EMPTY)));
+            pnlStatus.setBackground(new Background(new BackgroundFill(Color.rgb(63, 43, 99), CornerRadii.EMPTY, Insets.EMPTY)));
             pnOrders.toFront();
         }
     }
@@ -194,13 +205,33 @@ public class Controller3 implements Initializable {
     }
 
 
+    @FXML
+    void addOrder(ActionEvent event) {
+
+    }
+
+    @FXML
+    void changeStatus(ActionEvent event) {
+
+    }
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         GetDataSchema getData = new GetDataSchema();
 //SET ENUM TO COMBOBOX
-
+        orderStat.getItems().addAll(ShippingStatus.values());
+        orderStat.getSelectionModel().selectFirst();
         bookType.getItems().addAll(BookType.values());
 
+//BOOK LIST ->>>>
+        col_ord_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        col_ord_book.setCellValueFactory(new PropertyValueFactory<>("book"));
+        col_ord_pesel.setCellValueFactory(new PropertyValueFactory<>("pesel"));
+        col_ord_stat.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        orderTable.setItems(getData.seeAllOrders());
 //BOOK LIST ->>>>
         col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         col_title.setCellValueFactory(new PropertyValueFactory<>("title"));

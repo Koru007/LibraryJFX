@@ -10,7 +10,7 @@ public class DBHandler extends Configs {
     public Connection dbConnection;
 
     public Connection getDbConnection() {
-        String connectionName = "jdbc:mysql://" + Configs.dbhost + ":" + Configs.dbport + "/" + Configs.dbname + "?autoReconnect= true&useSSL=false&allowMultiQueries=true";
+        String connectionName = "jdbc:mysql://" + Configs.dbhost + ":" + Configs.dbport + "/" + Configs.dbname + "?useUnicode=true&characterEncoding=utf8&useSSL=false";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {

@@ -20,6 +20,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="libraryPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.Controller3">
    <children>
@@ -125,19 +126,39 @@
                      </padding></VBox>
                   <StackPane layoutX="241.0" layoutY="113.0">
                      <children>
-                        <GridPane fx:id="pnOrders" layoutX="10.0" layoutY="10.0" prefHeight="318.0" prefWidth="642.0" style="-fx-background-color: white;">
-                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
+                        <GridPane fx:id="pnClients" prefHeight="362.0" prefWidth="593.0" style="-fx-background-color: white;">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="438.2000030517578" minHeight="10.0" prefHeight="278.6000061035156" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="231.00000610351563" minHeight="34.0" prefHeight="28.199993896484372" vgrow="SOMETIMES" />
+                          </rowConstraints>
                            <children>
-                              <Label alignment="CENTER" prefHeight="83.0" prefWidth="663.0" text="Orders" textFill="#002a64">
-                                 <font>
-                                    <Font size="56.0" />
-                                 </font>
-                              </Label>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                 <children>
+                                    <TextField fx:id="peselToDelete_field" prefHeight="26.0" prefWidth="174.0" promptText="Enter PESEL to delete client">
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <Button mnemonicParsing="false" onAction="#deleteClient" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: linear-gradient(to left top, #d10025, #dd0032, #e9003e, #f4004b, #ff0059); -fx-background-radius: 1em;" stylesheets="@resources/style.css" text="Delete" textFill="WHITE">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="clientTable" prefHeight="286.0" prefWidth="654.0" stylesheets="@resources/style.css">
+                                <columns>
+                                  <TableColumn fx:id="col_cli_pesel" prefWidth="176.0" text="Pesel" />
+                                    <TableColumn fx:id="col_cli_name" prefWidth="240.0" text="First Name " />
+                                    <TableColumn fx:id="col_cli_secNam" prefWidth="234.0" text="Second name" />
+                                </columns>
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin>
+                              </TableView>
                            </children>
                         </GridPane>
                         <GridPane fx:id="pnBooks" prefHeight="318.0" prefWidth="653.0" style="-fx-background-color: white;">
@@ -321,39 +342,124 @@
                               <Insets />
                            </StackPane.margin>
                         </GridPane>
-                        <GridPane fx:id="pnClients" prefHeight="362.0" prefWidth="593.0" style="-fx-background-color: white;">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints maxHeight="438.2000030517578" minHeight="10.0" prefHeight="278.6000061035156" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="231.00000610351563" minHeight="34.0" prefHeight="28.199993896484372" vgrow="SOMETIMES" />
-                          </rowConstraints>
+                        <GridPane fx:id="pnOrders" layoutX="10.0" layoutY="10.0" prefHeight="362.0" prefWidth="593.0" style="-fx-background-color: white;">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="438.2000030517578" minHeight="10.0" prefHeight="283.1999877929687" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="231.00000610351563" minHeight="34.0" prefHeight="79.20001220703125" vgrow="SOMETIMES" />
+                           </rowConstraints>
                            <children>
-                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
-                                 <children>
-                                    <TextField fx:id="peselToDelete_field" prefHeight="26.0" prefWidth="174.0" promptText="Enter PESEL to delete client">
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </TextField>
-                                    <Button mnemonicParsing="false" onAction="#deleteClient" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: linear-gradient(to left top, #d10025, #dd0032, #e9003e, #f4004b, #ff0059); -fx-background-radius: 1em;" stylesheets="@resources/style.css" text="Delete" textFill="WHITE">
-                                       <HBox.margin>
-                                          <Insets right="5.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                              <TableView fx:id="clientTable" prefHeight="286.0" prefWidth="654.0" stylesheets="@resources/style.css">
-                                <columns>
-                                  <TableColumn fx:id="col_cli_pesel" prefWidth="176.0" text="Pesel" />
-                                    <TableColumn fx:id="col_cli_name" prefWidth="240.0" text="First Name " />
-                                    <TableColumn fx:id="col_cli_secNam" prefWidth="234.0" text="Second name" />
-                                </columns>
+                              <TableView fx:id="orderTable" prefHeight="286.0" prefWidth="654.0" stylesheets="@resources/style.css">
+                                 <columns>
+                                    <TableColumn fx:id="col_ord_id" prefWidth="50.40008544921875" text="ID" />
+                                    <TableColumn fx:id="col_ord_pesel" prefWidth="132.0" text="Pesel" />
+                                    <TableColumn fx:id="col_ord_book" prefWidth="283.199951171875" text="Book" />
+                                    <TableColumn fx:id="col_ord_stat" maxWidth="233.60000000000002" prefWidth="181.60003662109375" text="Status" />
+                                 </columns>
                                  <GridPane.margin>
                                     <Insets top="5.0" />
                                  </GridPane.margin>
                               </TableView>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                 <children>
+                                    <VBox prefHeight="70.0" prefWidth="135.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Client PSESEL" />
+                                          <TextField fx:id="orderPesel" prefHeight="26.0" prefWidth="112.0" promptText="97101251202">
+                                             <VBox.margin>
+                                                <Insets right="10.0" top="5.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets top="6.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox layoutX="10.0" layoutY="10.0" prefHeight="70.0" prefWidth="80.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Book ID" />
+                                          <TextField fx:id="orderBookID" prefHeight="26.0" prefWidth="140.0" promptText="23">
+                                             <VBox.margin>
+                                                <Insets right="10.0" top="5.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets top="6.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox layoutX="220.0" layoutY="10.0" prefHeight="67.0" prefWidth="169.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Order Status" />
+                                          <ComboBox fx:id="orderStat" prefWidth="150.0">
+                                             <VBox.margin>
+                                                <Insets right="10.0" top="5.0" />
+                                             </VBox.margin>
+                                          </ComboBox>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets top="6.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <HBox alignment="CENTER" prefHeight="67.0" prefWidth="264.0">
+                                       <children>
+                                          <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#addOrder" prefHeight="30.0" prefWidth="98.0" style="-fx-background-color: linear-gradient(to left top, #002163, #00236f, #00257a, #002786, #002992); -fx-background-radius: 1em;" text="Add order" textFill="WHITE">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font>
+                                             <effect>
+                                                <DropShadow color="#00000034" />
+                                             </effect>
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                             <graphic>
+                                                <ImageView fitHeight="17.0" fitWidth="17.0">
+                                                   <image>
+                                                      <Image url="@resources/icons/plus.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#changeStatus" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: linear-gradient(to left top, #6500d4, #7800df, #8b00ea, #9e00f5, #b100ff);; -fx-background-radius: 1em;" text="Change status" textFill="WHITE">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font>
+                                             <effect>
+                                                <DropShadow color="#00000034" />
+                                             </effect>
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                             <graphic>
+                                                <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                   <image>
+                                                      <Image url="@resources/icons/random.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets top="6.0" />
+                                       </HBox.margin>
+                                    </HBox>
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets top="6.0" />
+                                 </GridPane.margin>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </HBox>
                            </children>
                         </GridPane>
                      </children>

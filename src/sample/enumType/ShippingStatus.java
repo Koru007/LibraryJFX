@@ -1,5 +1,5 @@
 package sample.enumType;
 
 public enum ShippingStatus {
-    OCZEKUJE, WYSŁANE, ZAPŁACONE
-    }
+    WAITING, PAID, SHIPPED, DELIVERED
+}
