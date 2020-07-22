@@ -52,6 +52,18 @@ public class ChangingDataSchema {
         }
     }
 
+    public void updateOrderStatus(int orderId, int status) {
+        try {
+            ste_1 = connection.createStatement();
+            ste_1.executeUpdate("UPDATE book_order SET status ='" + status + "' WHERE id ='" + orderId + "'");
+
+            System.out.println("Successful status update ");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public static void infoBox(String infoMessage, String headerText, String title) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setContentText(infoMessage);

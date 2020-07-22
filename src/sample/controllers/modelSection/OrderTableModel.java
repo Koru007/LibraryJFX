@@ -3,6 +3,10 @@ package sample.controllers.modelSection;
 public class OrderTableModel {
     String id, pesel, book, status;
 
+    public OrderTableModel(String book) {
+        this.book = book;
+    }
+
     public OrderTableModel(String id, String pesel, String book, String status) {
         this.id = id;
         this.pesel = pesel;

@@ -23,13 +23,15 @@ public class GetDataSchema {
     //ORDER
     public ObservableList<OrderTableModel> seeAllOrders() {
         try {
-            ResultSet rs = con.createStatement().executeQuery("select * from book_order");
+            ResultSet rs = con.createStatement().executeQuery("SELECT o.id, o.pesel, b.title, os.name FROM book_order o JOIN book b ON o.book_id = b.id JOIN sl_order_status os ON os.id = o.status ORDER BY o.id;");
+
+
             while (rs.next()) {
                 orderList.add(new OrderTableModel(
                         rs.getString("id"),
                         rs.getString("pesel"),
-                        rs.getString("book_id"),
-                        rs.getString("status")));
+                        rs.getString("title"),
+                        rs.getString("name")));
             }
         } catch (
                 SQLException throwables) {

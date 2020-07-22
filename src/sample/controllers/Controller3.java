@@ -64,6 +64,8 @@ public class Controller3 implements Initializable {
     private TextField orderPesel;
     @FXML
     private TextField orderBookID;
+    @FXML
+    private TextField orderID;
 
     //   Delete section
     @FXML
@@ -103,7 +105,16 @@ public class Controller3 implements Initializable {
 
     @FXML
     void changeStatus(ActionEvent event) {
+        int order_id = Integer.parseInt(orderID.getText());
+        int order_status = orderStat.getValue().getShippingStatValue();
 
+        ChangingDataSchema changingDataSchema = new ChangingDataSchema();
+        changingDataSchema.updateOrderStatus(order_id,order_status);
+
+        orderBookID.clear();
+
+        GetDataSchema getData = new GetDataSchema();
+        orderTable.setItems(getData.seeAllOrders());
     }
 
     @FXML
@@ -113,7 +124,7 @@ public class Controller3 implements Initializable {
         int order_status = orderStat.getValue().getShippingStatValue();
 
         AddDataSchema addDataSchema = new AddDataSchema();
-        addDataSchema.addNewOrderToDB(pesel,book_id,order_status);
+        addDataSchema.addNewOrderToDB(pesel, book_id, order_status);
 
         orderPesel.clear();
         orderBookID.clear();
@@ -232,7 +243,7 @@ public class Controller3 implements Initializable {
         orderStat.getSelectionModel().selectFirst();
         bookType.getItems().addAll(BookType.values());
 
-//BOOK LIST ->>>>
+//ORDER LIST ->>>>
         col_ord_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         col_ord_book.setCellValueFactory(new PropertyValueFactory<>("book"));
         col_ord_pesel.setCellValueFactory(new PropertyValueFactory<>("pesel"));

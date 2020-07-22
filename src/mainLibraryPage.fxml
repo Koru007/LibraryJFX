@@ -370,7 +370,7 @@
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Client PSESEL" />
                                           <TextField fx:id="orderPesel" prefHeight="26.0" prefWidth="112.0" promptText="97101251202">
                                              <VBox.margin>
-                                                <Insets right="20.0" top="5.0" />
+                                                <Insets right="16.0" top="5.0" />
                                              </VBox.margin>
                                           </TextField>
                                        </children>
@@ -383,7 +383,7 @@
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Book ID" />
                                           <TextField fx:id="orderBookID" prefHeight="26.0" prefWidth="140.0" promptText="23">
                                              <VBox.margin>
-                                                <Insets right="20.0" top="5.0" />
+                                                <Insets right="16.0" top="5.0" />
                                              </VBox.margin>
                                           </TextField>
                                        </children>
@@ -391,12 +391,12 @@
                                           <Insets top="6.0" />
                                        </HBox.margin>
                                     </VBox>
-                                    <VBox layoutX="220.0" layoutY="10.0" prefHeight="67.0" prefWidth="169.0">
+                                    <VBox layoutX="220.0" layoutY="10.0" prefHeight="67.0" prefWidth="158.0">
                                        <children>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Order Status" />
                                           <ComboBox fx:id="orderStat" prefWidth="150.0">
                                              <VBox.margin>
-                                                <Insets right="20.0" top="5.0" />
+                                                <Insets right="16.0" top="5.0" />
                                              </VBox.margin>
                                           </ComboBox>
                                        </children>
@@ -404,7 +404,7 @@
                                           <Insets top="6.0" />
                                        </HBox.margin>
                                     </VBox>
-                                    <HBox alignment="CENTER" prefHeight="67.0" prefWidth="264.0">
+                                    <HBox alignment="CENTER" prefHeight="67.0" prefWidth="298.0">
                                        <children>
                                           <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#addNewOrder" prefHeight="30.0" prefWidth="98.0" style="-fx-background-color: linear-gradient(to left top, #002163, #00236f, #00257a, #002786, #002992); -fx-background-radius: 1em;" text="Add order" textFill="WHITE">
                                              <opaqueInsets>
@@ -430,6 +430,19 @@
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
                                           </Button>
+                                          <VBox prefHeight="70.0" prefWidth="49.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Order ID" />
+                                                <TextField fx:id="orderID" prefHeight="26.0" prefWidth="140.0" promptText="9">
+                                                   <VBox.margin>
+                                                      <Insets top="5.0" />
+                                                   </VBox.margin>
+                                                </TextField>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </VBox>
                                           <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#changeStatus" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: linear-gradient(to left top, #6500d4, #7800df, #8b00ea, #9e00f5, #b100ff);; -fx-background-radius: 1em;" text="Change status" textFill="WHITE">
                                              <opaqueInsets>
                                                 <Insets />
