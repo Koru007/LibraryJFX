@@ -101,13 +101,34 @@ public class Controller3 implements Initializable {
     private TableColumn<?, ?> col_ord_stat;
 
 
+    @FXML
+    void changeStatus(ActionEvent event) {
+
+    }
+
+    @FXML
+    void addNewOrder(ActionEvent event) {
+        String pesel = orderPesel.getText();
+        int book_id = Integer.parseInt(orderBookID.getText());
+        int order_status = orderStat.getValue().getShippingStatValue();
+
+        AddDataSchema addDataSchema = new AddDataSchema();
+        addDataSchema.addNewOrderToDB(pesel,book_id,order_status);
+
+        orderPesel.clear();
+        orderBookID.clear();
+
+        GetDataSchema getData = new GetDataSchema();
+        orderTable.setItems(getData.seeAllOrders());
+    }
+
 
     @FXML
     void addNewBook(ActionEvent event) {
         long isbn = Long.parseLong(isbn_hold.getText());
         String title = title_hold.getText();
         String author = author_hold.getText();
-        int bookT = bookType.getValue().getValue();
+        int bookT = bookType.getValue().getBookValue();
         String publisher = publisher_hold.getText();
         int pubYear = Integer.parseInt(publicationD_hold.getText());
         double price = Double.parseDouble(price_hold.getText());
@@ -127,7 +148,6 @@ public class Controller3 implements Initializable {
         } catch (Exception e) {
             throw e;
         }
-
         GetDataSchema getData = new GetDataSchema();
         bookTable.setItems(getData.seeAllBooks());
     }
@@ -203,19 +223,6 @@ public class Controller3 implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/logInPage.fxml"));
         libraryPage.getChildren().setAll(pane);
     }
-
-
-    @FXML
-    void addOrder(ActionEvent event) {
-
-    }
-
-    @FXML
-    void changeStatus(ActionEvent event) {
-
-    }
-
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -369,7 +370,7 @@
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Client PSESEL" />
                                           <TextField fx:id="orderPesel" prefHeight="26.0" prefWidth="112.0" promptText="97101251202">
                                              <VBox.margin>
-                                                <Insets right="10.0" top="5.0" />
+                                                <Insets right="20.0" top="5.0" />
                                              </VBox.margin>
                                           </TextField>
                                        </children>
@@ -382,7 +383,7 @@
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Book ID" />
                                           <TextField fx:id="orderBookID" prefHeight="26.0" prefWidth="140.0" promptText="23">
                                              <VBox.margin>
-                                                <Insets right="10.0" top="5.0" />
+                                                <Insets right="20.0" top="5.0" />
                                              </VBox.margin>
                                           </TextField>
                                        </children>
@@ -395,7 +396,7 @@
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Order Status" />
                                           <ComboBox fx:id="orderStat" prefWidth="150.0">
                                              <VBox.margin>
-                                                <Insets right="10.0" top="5.0" />
+                                                <Insets right="20.0" top="5.0" />
                                              </VBox.margin>
                                           </ComboBox>
                                        </children>
@@ -405,7 +406,7 @@
                                     </VBox>
                                     <HBox alignment="CENTER" prefHeight="67.0" prefWidth="264.0">
                                        <children>
-                                          <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#addOrder" prefHeight="30.0" prefWidth="98.0" style="-fx-background-color: linear-gradient(to left top, #002163, #00236f, #00257a, #002786, #002992); -fx-background-radius: 1em;" text="Add order" textFill="WHITE">
+                                          <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#addNewOrder" prefHeight="30.0" prefWidth="98.0" style="-fx-background-color: linear-gradient(to left top, #002163, #00236f, #00257a, #002786, #002992); -fx-background-radius: 1em;" text="Add order" textFill="WHITE">
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
@@ -425,6 +426,9 @@
                                                    </image>
                                                 </ImageView>
                                              </graphic>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </Button>
                                           <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#changeStatus" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: linear-gradient(to left top, #6500d4, #7800df, #8b00ea, #9e00f5, #b100ff);; -fx-background-radius: 1em;" text="Change status" textFill="WHITE">
                                              <opaqueInsets>
@@ -446,6 +450,9 @@
                                                    </image>
                                                 </ImageView>
                                              </graphic>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </Button>
                                        </children>
                                        <HBox.margin>

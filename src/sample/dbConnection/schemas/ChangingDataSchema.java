@@ -1,5 +1,6 @@
 package sample.dbConnection.schemas;
 
+import javafx.scene.control.Alert;
 import sample.dbConnection.DBHandler;
 
 import java.sql.*;
@@ -12,10 +13,17 @@ public class ChangingDataSchema {
     public void deleteClientByPesel(String peselToDelete) {
         try {
             ste_1 = connection.createStatement();
-            ste_1.executeUpdate("DELETE FROM contact WHERE pesel = '" + peselToDelete + "'");
-            ste_1.executeUpdate("DELETE FROM client WHERE pesel = '" + peselToDelete + "'");
+            ResultSet res = ste_1.executeQuery("SELECT COUNT(*) FROM book_order WHERE pesel = '" + peselToDelete + "'");
+            res.next();
+            int col = res.getInt(1);
+            if (col == 0) {
+                ste_1.executeUpdate("DELETE FROM contact WHERE pesel = '" + peselToDelete + "'");
+                ste_1.executeUpdate("DELETE FROM client WHERE pesel = '" + peselToDelete + "'");
 
-            System.out.println("Client with pesel: " + peselToDelete + " DELETED SUCCESSFULLY");
+                System.out.println("Client with pesel: " + peselToDelete + " DELETED SUCCESSFULLY");
+            } else {
+                infoBox("Client with pesel: " + peselToDelete + " already borrowed a book", null, "Mission failed");
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -42,7 +50,14 @@ public class ChangingDataSchema {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
 
+    public static void infoBox(String infoMessage, String headerText, String title) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setContentText(infoMessage);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.showAndWait();
     }
 }
 

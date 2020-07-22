@@ -37,7 +37,6 @@ public class AddDataSchema {
 
     /* ADD NEW CLIENT TO DB */
     public void addNewClientToDB(String client_pesel, String client_name, String client_sureName, String client_address, String client_mail, String client_phone) {
-
         try {
             p_1 = connection.prepareStatement("INSERT INTO client(pesel, name, second_name)VALUES (?,?,?)");
             p_2 = connection.prepareStatement("INSERT INTO contact(pesel, address, mail, telephone)VALUES (?,?,?,?)");
@@ -60,6 +59,25 @@ public class AddDataSchema {
             System.out.println("New client sign up successfully");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }
+    }
+
+    public void addNewOrderToDB(String pesel, int bookId, int shippingStat) {
+        try {
+            p_1 = connection.prepareStatement("INSERT INTO book_order(book_id, pesel, status) VALUES (?,?,?)");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            p_1.setInt(1, bookId);
+            p_1.setString(2, pesel);
+            p_1.setInt(3, shippingStat);
+
+            p_1.executeUpdate();
+
+            System.out.println("New order added successfully");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

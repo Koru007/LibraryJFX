@@ -22,23 +22,12 @@ public enum BookType {
     PODRĘCZNIK(16);
 
     private final int value;
-    private static Map map = new HashMap<>();
-
     private BookType(int value) {
         this.value = value;
     }
 
-    static {
-        for (BookType pageType : BookType.values()) {
-            map.put(pageType.value, pageType);
-        }
-    }
 
-    public static BookType valueOf(int pageType) {
-        return (BookType) map.get(pageType);
-    }
-
-    public int getValue() {
+    public int getBookValue() {
         return value;
     }
 }
