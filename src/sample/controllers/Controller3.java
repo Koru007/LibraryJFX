@@ -257,7 +257,6 @@ public class Controller3 implements Initializable {
 
         bookTable.setItems(getData.seeAllBooks());
 //CLIENT LIST ->>>>
-
         col_cli_pesel.setCellValueFactory(new PropertyValueFactory<>("pesel"));
         col_cli_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         col_cli_secNam.setCellValueFactory(new PropertyValueFactory<>("second_name"));

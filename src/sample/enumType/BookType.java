@@ -1,8 +1,5 @@
 package sample.enumType;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public enum BookType {
     SENSATION(1),
     CRIMINAL(2),

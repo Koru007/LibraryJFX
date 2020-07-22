@@ -8,7 +8,6 @@ import sample.controllers.modelSection.OrderTableModel;
 import sample.dbConnection.DBHandler;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -24,7 +23,6 @@ public class GetDataSchema {
     public ObservableList<OrderTableModel> seeAllOrders() {
         try {
             ResultSet rs = con.createStatement().executeQuery("SELECT o.id, o.pesel, b.title, os.name FROM book_order o JOIN book b ON o.book_id = b.id JOIN sl_order_status os ON os.id = o.status ORDER BY o.id;");
-
 
             while (rs.next()) {
                 orderList.add(new OrderTableModel(

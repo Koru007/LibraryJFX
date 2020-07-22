@@ -3,7 +3,10 @@ package sample.dbConnection.schemas;
 import javafx.scene.control.Alert;
 import sample.dbConnection.DBHandler;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class ChangingDataSchema {
     DBHandler dbHandler = new DBHandler();
@@ -61,7 +64,6 @@ public class ChangingDataSchema {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public static void infoBox(String infoMessage, String headerText, String title) {

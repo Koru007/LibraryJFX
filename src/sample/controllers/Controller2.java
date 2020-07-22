@@ -5,13 +5,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import sample.dbConnection.DBHandler;
 import sample.dbConnection.schemas.AddDataSchema;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class Controller2 {
 
@@ -62,15 +58,8 @@ public class Controller2 {
 
     }
 
-
     @FXML
     void handleCancle(ActionEvent event) {
         System.exit(0);
     }
-
-    @FXML
-    void signUp(ActionEvent event) {
-
-    }
-
 }
