@@ -111,7 +111,7 @@ public class Controller3 implements Initializable {
         ChangingDataSchema changingDataSchema = new ChangingDataSchema();
         changingDataSchema.updateOrderStatus(order_id,order_status);
 
-        orderBookID.clear();
+        orderID.clear();
 
         GetDataSchema getData = new GetDataSchema();
         orderTable.setItems(getData.seeAllOrders());
