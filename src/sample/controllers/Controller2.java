@@ -52,19 +52,15 @@ public class Controller2 {
             System.out.println("Pesel: " + pesel + "\nName: " + name + "\nSurename: " + sureName + "\nMail: " + mail + "\nBirthday: " + address + "\nPhone: " + phone);
 
         } else {
-            infoBox("Please complete all text fields", null, "SignUp failed");
+            infoBox("Please fill all text fields", null, "SignUp failed");
         }
 //      SHOWING DATA
 
 
     }
 
-    public static void infoBox(String infoMessage, String headerText, String title) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setContentText(infoMessage);
-        alert.setTitle(title);
-        alert.setHeaderText(headerText);
-        alert.showAndWait();
+    public void infoBox(String infoMessage, String headerText, String title) {
+        Controller.infobox(infoMessage, headerText, title);
     }
 
     @FXML

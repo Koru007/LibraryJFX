@@ -6,11 +6,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import sample.dbConnection.schemas.LoginSchema;
 
 import java.io.IOException;
 import java.sql.SQLException;
+
+import static sample.dbConnection.schemas.ChangingDataSchema.infoBox;
 
 public class Controller {
     @FXML
@@ -31,9 +35,6 @@ public class Controller {
         String email = email_field.getText();
         String password = password_field.getText();
 
-        System.out.println("User email: " + email);
-        System.out.println("User pass: " + password);
-
         LoginSchema loginSchema = new LoginSchema();
         boolean flag = loginSchema.validate(email, password);
 
@@ -45,11 +46,12 @@ public class Controller {
         }
     }
 
-    public static void infoBox(String infoMessage, String headerText, String title) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    public static void infobox(String infoMessage, String headerText, String title) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setHeaderText(headerText);
         alert.setContentText(infoMessage);
         alert.setTitle(title);
-        alert.setHeaderText(headerText);
+        ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image("resources/icons/libraryLogo.png"));
         alert.showAndWait();
     }
 

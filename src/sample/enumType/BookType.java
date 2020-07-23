@@ -15,7 +15,7 @@ public enum BookType {
     POPULAR_SCIENCE(12),
     YOUTH(13),
     CHILDREN(14),
-    COVERAGE(15),
+    REPORTAGE(15),
     HANDBOOK(16);
 
     private final int value;

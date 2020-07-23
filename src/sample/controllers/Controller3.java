@@ -7,8 +7,11 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import sample.controllers.modelSection.BookTableModel;
 import sample.controllers.modelSection.ClientTableModel;
 import sample.controllers.modelSection.OrderTableModel;
@@ -105,49 +108,56 @@ public class Controller3 implements Initializable {
 
     @FXML
     void changeStatus(ActionEvent event) {
-        int order_id = Integer.parseInt(orderID.getText());
-        int order_status = orderStat.getValue().getShippingStatValue();
+        boolean isOrderStatEmpty = orderStat.getSelectionModel().isEmpty();
 
-        ChangingDataSchema changingDataSchema = new ChangingDataSchema();
-        changingDataSchema.updateOrderStatus(order_id, order_status);
+        if (!(orderID.getText().equals("") || isOrderStatEmpty)) {
+            int order_id = Integer.parseInt(orderID.getText());
+            int order_status = orderStat.getValue().getShippingStatValue();
 
-        orderID.clear();
+            ChangingDataSchema changingDataSchema = new ChangingDataSchema();
+            changingDataSchema.updateOrderStatus(order_id, order_status);
 
-        GetDataSchema getData = new GetDataSchema();
-        orderTable.setItems(getData.seeAllOrders());
+            orderID.clear();
+
+            GetDataSchema getData = new GetDataSchema();
+            orderTable.setItems(getData.seeAllOrders());
+        } else infoBox("Please fill all text fields",null,"Empty filed");
     }
 
     @FXML
     void addNewOrder(ActionEvent event) {
         String pesel = orderPesel.getText();
-        int book_id = Integer.parseInt(orderBookID.getText());
-        int order_status = orderStat.getValue().getShippingStatValue();
+        if (!(pesel.equals("") || orderBookID.getText().equals(""))) {
+
+            int book_id = Integer.parseInt(orderBookID.getText());
+            int order_status = orderStat.getValue().getShippingStatValue();
 
 
-        AddDataSchema addDataSchema = new AddDataSchema();
-        addDataSchema.addNewOrderToDB(pesel, book_id, order_status);
+            AddDataSchema addDataSchema = new AddDataSchema();
+            addDataSchema.addNewOrderToDB(pesel, book_id, order_status);
 
-        orderPesel.clear();
-        orderBookID.clear();
+            orderPesel.clear();
+            orderBookID.clear();
 
-        GetDataSchema getData = new GetDataSchema();
-        orderTable.setItems(getData.seeAllOrders());
+            GetDataSchema getData = new GetDataSchema();
+            orderTable.setItems(getData.seeAllOrders());
+        } else infoBox("Please fill all text fields", null, "Empty filed");
     }
 
 
     @FXML
     void addNewBook(ActionEvent event) {
-        long isbn = Long.parseLong(isbn_hold.getText());
         String title = title_hold.getText();
         String author = author_hold.getText();
-        int bookT = bookType.getValue().getBookValue();
         String publisher = publisher_hold.getText();
-        int pubYear = Integer.parseInt(publicationD_hold.getText());
-        double price = Double.parseDouble(price_hold.getText());
+        boolean isBookTypeEmpty = bookType.getSelectionModel().isEmpty();
 
-        System.out.println(title + "\n" + author + "\n" + pubYear + "\nbookType: " + bookT + "\n" + isbn + "\n" + price + "\n" + publisher + "\n");
+        if (!(isbn_hold.getText().equals("") || title.equals("") || isBookTypeEmpty || author.equals("") || publisher.equals("") || publicationD_hold.getText().equals("") || price_hold.getText().equals(""))) {
+            long isbn = Long.parseLong(isbn_hold.getText());
+            int bookT = bookType.getValue().getBookValue();
+            int pubYear = Integer.parseInt(publicationD_hold.getText());
+            double price = Double.parseDouble(price_hold.getText());
 
-        try {
             AddDataSchema addDataSchema = new AddDataSchema();
             addDataSchema.addDataOfNewBook(isbn, title, author, bookT, publisher, pubYear, price);
             isbn_hold.clear();
@@ -157,27 +167,29 @@ public class Controller3 implements Initializable {
             publisher_hold.clear();
             publicationD_hold.clear();
             price_hold.clear();
-        } catch (Exception e) {
-            throw e;
-        }
-        GetDataSchema getData = new GetDataSchema();
-        bookTable.setItems(getData.seeAllBooks());
+
+            GetDataSchema getData = new GetDataSchema();
+            bookTable.setItems(getData.seeAllBooks());
+        } else infoBox("Please fill all text fields", null, "Empty filed");
+
     }
 
     @FXML
     void changePrice(ActionEvent event) {
-        GetDataSchema getData = new GetDataSchema();
+        if (!(bookID_field.getText().equals("") || price_hold.getText().equals(""))) {
+            int bookId = Integer.parseInt(bookID_field.getText());
+            double pirice = Double.parseDouble(price_hold.getText());
 
-        int bookId = Integer.parseInt(bookID_field.getText());
-        double pirice = Double.parseDouble(price_hold.getText());
+            ChangingDataSchema changingDataSchema = new ChangingDataSchema();
+            changingDataSchema.updateBookPriceByID(bookId, pirice);
 
-        ChangingDataSchema changingDataSchema = new ChangingDataSchema();
-        changingDataSchema.updateBookPriceByID(bookId, pirice);
+            bookID_field.clear();
+            price_hold.clear();
 
-        bookID_field.clear();
-        price_hold.clear();
+            GetDataSchema getData = new GetDataSchema();
+            bookTable.setItems(getData.seeAllBooks());
+        } else infoBox("Please fill all text fields", null, "Empty filed");
 
-        bookTable.setItems(getData.seeAllBooks());
     }
 
     @FXML
@@ -191,9 +203,8 @@ public class Controller3 implements Initializable {
 
             GetDataSchema getData = new GetDataSchema();
             bookTable.setItems(getData.seeAllBooks());
-        }else {
-            infoBox("Pleas enter Book ID", null, "Empty field");
-        }
+        } else infoBox("Pleas enter Book ID", null, "Empty field");
+
     }
 
     @FXML
@@ -207,9 +218,7 @@ public class Controller3 implements Initializable {
 
             GetDataSchema getData = new GetDataSchema();
             clientTable.setItems(getData.seeAllClients());
-        } else {
-            infoBox("Pleas enter pesel", null, "Empty field");
-        }
+        } else infoBox("Pleas enter pesel", null, "Empty field");
     }
 
     @FXML
@@ -220,13 +229,10 @@ public class Controller3 implements Initializable {
             pnlStatus.setBackground(new Background(new BackgroundFill(Color.rgb(0, 33, 99), CornerRadii.EMPTY, Insets.EMPTY)));
             pnClients.toFront();
         } else if (event.getSource() == btnBooks) {
-
             lblStatusMin.setText("/home/books");
             lblStatus.setText("Books");
             pnlStatus.setBackground(new Background(new BackgroundFill(Color.rgb(21, 79, 141), CornerRadii.EMPTY, Insets.EMPTY)));
             pnBooks.toFront();
-
-
         } else if (event.getSource() == btnOrders) {
             lblStatusMin.setText("/home/orders");
             lblStatus.setText("Orders");
@@ -270,12 +276,8 @@ public class Controller3 implements Initializable {
         clientTable.setItems(getData.seeAllClients());
     }
 
-    public static void infoBox(String infoMessage, String headerText, String title) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setContentText(infoMessage);
-        alert.setTitle(title);
-        alert.setHeaderText(headerText);
-        alert.showAndWait();
+    public void infoBox(String infoMessage, String headerText, String title) {
+        Controller.infobox(infoMessage, headerText, title);
     }
 }
 
