@@ -109,7 +109,7 @@ public class Controller3 implements Initializable {
         int order_status = orderStat.getValue().getShippingStatValue();
 
         ChangingDataSchema changingDataSchema = new ChangingDataSchema();
-        changingDataSchema.updateOrderStatus(order_id,order_status);
+        changingDataSchema.updateOrderStatus(order_id, order_status);
 
         orderID.clear();
 
@@ -122,6 +122,7 @@ public class Controller3 implements Initializable {
         String pesel = orderPesel.getText();
         int book_id = Integer.parseInt(orderBookID.getText());
         int order_status = orderStat.getValue().getShippingStatValue();
+
 
         AddDataSchema addDataSchema = new AddDataSchema();
         addDataSchema.addNewOrderToDB(pesel, book_id, order_status);
@@ -181,33 +182,38 @@ public class Controller3 implements Initializable {
 
     @FXML
     void deleteBook(ActionEvent event) {
-        int id = Integer.parseInt(bookID_field.getText());
+        if (!bookID_field.getText().equals("")) {
+            int id = Integer.parseInt(bookID_field.getText());
+            ChangingDataSchema changingDataSchema = new ChangingDataSchema();
+            changingDataSchema.deleteBookByID(id);
 
-        ChangingDataSchema changingDataSchema = new ChangingDataSchema();
-        changingDataSchema.deleteBookByID(id);
+            bookID_field.clear();
 
-        bookID_field.clear();
-
-        GetDataSchema getData = new GetDataSchema();
-        bookTable.setItems(getData.seeAllBooks());
+            GetDataSchema getData = new GetDataSchema();
+            bookTable.setItems(getData.seeAllBooks());
+        }else {
+            infoBox("Pleas enter Book ID", null, "Empty field");
+        }
     }
 
     @FXML
     void deleteClient(ActionEvent event) {
         String pesel = peselToDelete_field.getText();
+        if (!pesel.equals("")) {
+            ChangingDataSchema changingDataSchema = new ChangingDataSchema();
+            changingDataSchema.deleteClientByPesel(pesel);
 
-        ChangingDataSchema changingDataSchema = new ChangingDataSchema();
-        changingDataSchema.deleteClientByPesel(pesel);
+            peselToDelete_field.clear();
 
-        peselToDelete_field.clear();
-
-        GetDataSchema getData = new GetDataSchema();
-        clientTable.setItems(getData.seeAllClients());
+            GetDataSchema getData = new GetDataSchema();
+            clientTable.setItems(getData.seeAllClients());
+        } else {
+            infoBox("Pleas enter pesel", null, "Empty field");
+        }
     }
 
     @FXML
     private void handleClicks(ActionEvent event) {
-
         if (event.getSource() == btnClients) {
             lblStatusMin.setText("/home/clients");
             lblStatus.setText("Clients");
@@ -262,6 +268,14 @@ public class Controller3 implements Initializable {
         col_cli_secNam.setCellValueFactory(new PropertyValueFactory<>("second_name"));
 
         clientTable.setItems(getData.seeAllClients());
+    }
+
+    public static void infoBox(String infoMessage, String headerText, String title) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setContentText(infoMessage);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.showAndWait();
     }
 }
 

@@ -127,41 +127,6 @@
                      </padding></VBox>
                   <StackPane layoutX="241.0" layoutY="113.0">
                      <children>
-                        <GridPane fx:id="pnClients" prefHeight="362.0" prefWidth="593.0" style="-fx-background-color: white;">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints maxHeight="438.2000030517578" minHeight="10.0" prefHeight="278.6000061035156" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="231.00000610351563" minHeight="34.0" prefHeight="28.199993896484372" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
-                                 <children>
-                                    <TextField fx:id="peselToDelete_field" prefHeight="26.0" prefWidth="174.0" promptText="Enter PESEL to delete client">
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </TextField>
-                                    <Button mnemonicParsing="false" onAction="#deleteClient" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: linear-gradient(to left top, #d10025, #dd0032, #e9003e, #f4004b, #ff0059); -fx-background-radius: 1em;" stylesheets="@resources/style.css" text="Delete" textFill="WHITE">
-                                       <HBox.margin>
-                                          <Insets right="5.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                              <TableView fx:id="clientTable" prefHeight="286.0" prefWidth="654.0" stylesheets="@resources/style.css">
-                                <columns>
-                                  <TableColumn fx:id="col_cli_pesel" prefWidth="176.0" text="Pesel" />
-                                    <TableColumn fx:id="col_cli_name" prefWidth="240.0" text="First Name " />
-                                    <TableColumn fx:id="col_cli_secNam" prefWidth="234.0" text="Second name" />
-                                </columns>
-                                 <GridPane.margin>
-                                    <Insets top="5.0" />
-                                 </GridPane.margin>
-                              </TableView>
-                           </children>
-                        </GridPane>
                         <GridPane fx:id="pnBooks" prefHeight="318.0" prefWidth="653.0" style="-fx-background-color: white;">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -480,6 +445,41 @@
                                     <Insets />
                                  </opaqueInsets>
                               </HBox>
+                           </children>
+                        </GridPane>
+                        <GridPane fx:id="pnClients" prefHeight="362.0" prefWidth="593.0" style="-fx-background-color: white;">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="438.2000030517578" minHeight="10.0" prefHeight="278.6000061035156" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="231.00000610351563" minHeight="34.0" prefHeight="28.199993896484372" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                 <children>
+                                    <TextField fx:id="peselToDelete_field" prefHeight="26.0" prefWidth="174.0" promptText="Enter PESEL to delete client">
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <Button mnemonicParsing="false" onAction="#deleteClient" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: linear-gradient(to left top, #d10025, #dd0032, #e9003e, #f4004b, #ff0059); -fx-background-radius: 1em;" stylesheets="@resources/style.css" text="Delete" textFill="WHITE">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="clientTable" prefHeight="286.0" prefWidth="654.0" stylesheets="@resources/style.css">
+                                <columns>
+                                  <TableColumn fx:id="col_cli_pesel" prefWidth="176.0" text="Pesel" />
+                                    <TableColumn fx:id="col_cli_name" prefWidth="240.0" text="First Name " />
+                                    <TableColumn fx:id="col_cli_secNam" prefWidth="234.0" text="Second name" />
+                                </columns>
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin>
+                              </TableView>
                            </children>
                         </GridPane>
                      </children>

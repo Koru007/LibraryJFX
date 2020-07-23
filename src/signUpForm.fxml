@@ -28,31 +28,31 @@
                               <Insets top="-1.0" />
                            </VBox.margin>
                         </TextField>
-                        <Label prefHeight="30.0" prefWidth="84.0" text="Imię">
+                        <Label prefHeight="30.0" prefWidth="84.0" text="Name">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="name_field" prefHeight="32.0" prefWidth="240.0" promptText="Imię" />
-                        <Label layoutX="10.0" layoutY="110.0" prefHeight="30.0" prefWidth="84.0" text="Nazwisko">
+                        <TextField fx:id="name_field" prefHeight="32.0" prefWidth="240.0" promptText="Thomas" />
+                        <Label layoutX="10.0" layoutY="110.0" prefHeight="30.0" prefWidth="84.0" text="Surname">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="sureName_field" layoutX="10.0" layoutY="140.0" prefHeight="32.0" prefWidth="240.0" promptText="Nazwisko" />
-                        <Label layoutX="10.0" layoutY="176.0" prefHeight="30.0" prefWidth="135.0" text="Adres">
+                        <TextField fx:id="sureName_field" layoutX="10.0" layoutY="140.0" prefHeight="32.0" prefWidth="240.0" promptText="Harris" />
+                        <Label layoutX="10.0" layoutY="176.0" prefHeight="30.0" prefWidth="135.0" text="Address">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="address_field" layoutX="10.0" layoutY="207.0" prefHeight="32.0" prefWidth="240.0" promptText="Grunwaldzka 15/10" />
-                        <Label layoutX="10.0" layoutY="243.0" prefHeight="30.0" prefWidth="84.0" text="Mail">
+                        <TextField fx:id="address_field" layoutX="10.0" layoutY="207.0" prefHeight="32.0" prefWidth="240.0" promptText="8200 Wayne StreetDanbury" />
+                        <Label layoutX="10.0" layoutY="243.0" prefHeight="30.0" prefWidth="84.0" text="Email">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="mail_field" layoutX="10.0" layoutY="273.0" prefHeight="32.0" prefWidth="240.0" promptText="adam.kowalski@gmail.com" />
-                        <Label layoutX="10.0" layoutY="309.0" prefHeight="30.0" prefWidth="84.0" text="Telefon">
+                        <TextField fx:id="mail_field" layoutX="10.0" layoutY="273.0" prefHeight="32.0" prefWidth="240.0" promptText="thomas@gmail.com" />
+                        <Label layoutX="10.0" layoutY="309.0" prefHeight="30.0" prefWidth="84.0" text="Telephone">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
