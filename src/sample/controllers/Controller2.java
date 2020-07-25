@@ -43,7 +43,8 @@ public class Controller2 {
         String address = address_field.getText();
         String phone = phone_field.getText();
 
-        if (!(pesel.equals("") || name.equals("") || sureName.equals("") || mail.equals("") || address.equals("") || phone.equals(""))) {
+        if (!(!pesel.matches("[0-9]{11}") || name.equals("") || sureName.equals("") || (!mail.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) || address.equals("") || phone.equals(""))) {
+
             AddDataSchema addDataSchema = new AddDataSchema();
             addDataSchema.addNewClientToDB(pesel, name, sureName, address, mail, phone);
 
