@@ -7,11 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import sample.controllers.modelSection.BookTableModel;
 import sample.controllers.modelSection.ClientTableModel;
 import sample.controllers.modelSection.OrderTableModel;
@@ -69,7 +66,6 @@ public class Controller3 implements Initializable {
     private TextField orderBookID;
     @FXML
     private TextField orderID;
-
     //   Delete section
     @FXML
     private TextField peselToDelete_field;
@@ -105,11 +101,9 @@ public class Controller3 implements Initializable {
     @FXML
     private TableColumn<?, ?> col_ord_stat;
 
-
     @FXML
     void changeStatus(ActionEvent event) {
         boolean isOrderStatEmpty = orderStat.getSelectionModel().isEmpty();
-
         if (!(orderID.getText().equals("") || isOrderStatEmpty)) {
             int order_id = Integer.parseInt(orderID.getText());
             int order_status = orderStat.getValue().getShippingStatValue();
@@ -121,7 +115,7 @@ public class Controller3 implements Initializable {
 
             GetDataSchema getData = new GetDataSchema();
             orderTable.setItems(getData.seeAllOrders());
-        } else infoBox("Please fill all text fields",null,"Empty filed");
+        } else infoBox("Please fill all text fields", null, "Empty filed");
     }
 
     @FXML
@@ -131,7 +125,6 @@ public class Controller3 implements Initializable {
 
             int book_id = Integer.parseInt(orderBookID.getText());
             int order_status = orderStat.getValue().getShippingStatValue();
-
 
             AddDataSchema addDataSchema = new AddDataSchema();
             addDataSchema.addNewOrderToDB(pesel, book_id, order_status);
@@ -143,7 +136,6 @@ public class Controller3 implements Initializable {
             orderTable.setItems(getData.seeAllOrders());
         } else infoBox("Please fill all text fields", null, "Empty filed");
     }
-
 
     @FXML
     void addNewBook(ActionEvent event) {
@@ -171,7 +163,6 @@ public class Controller3 implements Initializable {
             GetDataSchema getData = new GetDataSchema();
             bookTable.setItems(getData.seeAllBooks());
         } else infoBox("Please fill all text fields", null, "Empty filed");
-
     }
 
     @FXML
@@ -189,7 +180,6 @@ public class Controller3 implements Initializable {
             GetDataSchema getData = new GetDataSchema();
             bookTable.setItems(getData.seeAllBooks());
         } else infoBox("Please fill all text fields", null, "Empty filed");
-
     }
 
     @FXML
@@ -204,13 +194,12 @@ public class Controller3 implements Initializable {
             GetDataSchema getData = new GetDataSchema();
             bookTable.setItems(getData.seeAllBooks());
         } else infoBox("Pleas enter Book ID", null, "Empty field");
-
     }
 
     @FXML
     void deleteClient(ActionEvent event) {
         String pesel = peselToDelete_field.getText();
-        if (!pesel.equals("")) {
+        if (!pesel.equals("") && pesel.matches("[0-9]{11}")) {
             ChangingDataSchema changingDataSchema = new ChangingDataSchema();
             changingDataSchema.deleteClientByPesel(pesel);
 
@@ -254,7 +243,6 @@ public class Controller3 implements Initializable {
         orderStat.getItems().addAll(ShippingStatus.values());
         orderStat.getSelectionModel().selectFirst();
         bookType.getItems().addAll(BookType.values());
-
 //ORDER LIST ->>>>
         col_ord_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         col_ord_book.setCellValueFactory(new PropertyValueFactory<>("book"));
