@@ -79,11 +79,6 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <Label layoutX="24.0" layoutY="446.0" prefHeight="36.0" prefWidth="224.0" text="Daniel Wojda, Paweł Stasiak, Małgorzata Stasiak, Katarzyna Palichleb " textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
    </children>
